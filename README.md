@@ -130,11 +130,14 @@ Follow step 4 and step 5 in previous section.
 
 
 ### Multiple GPUs Training  
-I highly recommend utilizing multiple GPUs for training with Accelerator, as it significantly reduces VRAM requirements. First, configure the Accelerator with DeepSpeed. An example configuration file can be found at `example/deepspeed.yaml`.  
+I highly recommend utilizing multiple GPUs for training with Accelerator, as it significantly reduces VRAM requirements. First, configure the Accelerator with DeepSpeed. An example configuration file can be found at `example/deepspeed.yaml`:
+```
+accelerate config
+```
 
 Next, replace the `'python train_xx.py ...'` commands mentioned earlier with `'accelerate launch train_xx.py ...'`. For instance:  
 ```
-accelerate launch train.py --config_file example/deepspeed.yaml --config example/train_mask_motion.yaml
+accelerate launch --config_file example/deepspeed.yaml train.py --config example/train_mask_motion.yaml
 ```
 
 ## 💫 Inference
